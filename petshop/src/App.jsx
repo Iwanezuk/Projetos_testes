@@ -1,14 +1,15 @@
-
 import './assets/css/base/base.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'; 
 
 import Home from './paginas/Home';
 import Sobre from './paginas/Sobre';
 import Pagina404 from './paginas/Pagina404';
+import Cabecalho from './components/cabecalho';
 
 function App() {
   return (
     <Router>
+      <Cabecalho />
       <Routes>
         {/* Use element={<Componente />} para renderizar */}
         <Route path='/' element={<Home />} /> 
