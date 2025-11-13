@@ -83,6 +83,22 @@ const ListaCatAdmin = () => {
 										</Button>
 									</Link>
 								</td>
+								<td>
+									{/* Botão SUBCATEGORIA */}
+									<Link
+										to={`/admin/categoria/${categoria.id}`}
+										style={{ textDecoration: 'none' }}
+									>
+										<Button
+											type="button"
+											variant="outlined"
+											color="primary"
+											sx={{ margin: "0 0.25rem" }}
+										>
+											SubCategoria
+										</Button>
+									</Link>
+								</td>
 							</tr>
 						))
 					}
