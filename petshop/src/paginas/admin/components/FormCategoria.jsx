@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { api } from "../../../api/api";
+import { api } from "../../../api";
 
 const FormCategoria = () => {
     const navigate = useNavigate();
@@ -16,23 +16,25 @@ const FormCategoria = () => {
         }
     }, [id]); // Re-executa se o ID mudar
 
+
     const CadCategoria = (evento) => {
         evento.preventDefault();
 
-        // ATUALIZAÇÃO: Lógica de PUT vs POST
+        // Atualização: Lógica PUT vs POST
         if (id) {
-            // Modo Edição (PUT)
-            api.put(`categorias/${id}/`, {
-                id: nomeCategoria,
+            // Modo EDIÇÃO (PUT)
+            api.put(`/categorias/${id}`, {
+                id: nomeCategoria, 
                 nome: nomeCategoria,
-                subcategorias: [] // (Nota: O doc sobrescreve as subcategorias )
+                subcategorias: []
             })
                 .then(() => {
-                    alert("Sucesso na atualização!");
-                    navigate('/admin');
+                    alert("Sucesso na atualização!!!");
+                    navigate('/admin'); // ATUALIZAÇÃO: Navega para /admin
                 });
+
         } else {
-            // Lógica para POST modo cadastro
+            // Lógica para POST modo CADASTRO
             api.post(`/categorias`, {
                 id: nomeCategoria, // (JSON-Server usa 'id', mas o ideal seria a API gerar o ID)
                 nome: nomeCategoria,
@@ -48,7 +50,7 @@ const FormCategoria = () => {
         <main className="container flex flex--centro">
             <article className="cartao post">
                 <h2 className="titulo-pagina">
-                    {/* Título dinâmico */}
+                    {/* título dinâmico */}
                     {id ? 'Editar Categoria' : 'Cadastro de Categorias'}
                 </h2>
                 <br />
